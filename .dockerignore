@@ -1,0 +1,10 @@
+.env
+
+.composer/
+.npm/
+node_modules/
+vendor/
+
+database/database.sqlite
+storage/logs/*.log
+public/hot

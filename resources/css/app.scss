@@ -1,0 +1,25 @@
+@use "bulma/sass/utilities";
+
+@forward "bulma/sass/base";
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+}
+
+.image {
+    max-width: 500px;
+
+    figcaption {
+        font-family: sans-serif;
+        text-align: right;
+        color: white;
+        font-size: 0.8rem;
+        margin-top: -2rem;
+        padding-right: 0.5rem;
+        text-shadow: 1px 1px 1px black;
+    }
+}

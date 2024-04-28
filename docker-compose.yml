@@ -1,0 +1,22 @@
+services:
+
+  app:
+    image: localhost/king-trashmouth:dev
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: build-development
+    userns_mode: keep-id
+    ports:
+      - "8080:80"
+      - "5173:5173"
+    volumes:
+      - ./:/app
+
+  # app:
+  #   image: localhost/king-trashmouth:latest
+  #   ports:
+  #     - "8080:80"
+  #   environment:
+  #     - APP_KEY
+  #     - UNSPLASH_ACCESS_KEY
