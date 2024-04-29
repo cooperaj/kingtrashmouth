@@ -9,7 +9,7 @@
         @vite('resources/css/app.scss')
     </head>
     <body>
-        <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+        <main class="is-flex is-flex-direction-column is-align-items-center">
             <div class="image is-flex is-flex-direction-column is-align-items-center">
                 <div class="header">
                    {{ svg('header')->inline(true) }}
