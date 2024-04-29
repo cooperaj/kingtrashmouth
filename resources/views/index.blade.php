@@ -9,14 +9,17 @@
         @vite('resources/css/app.scss')
     </head>
     <body>
-        <main>
-            <div class="image">
+        <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+            <div class="image is-flex is-flex-direction-column is-align-items-center">
+                <div class="header">
+                   {{ svg('header')->inline(true) }}
+                </div>
                 <figure>
                     <img
                         src="{{ $photo->url }}"
                         alt="{{ $photo->alt }}"
                     />
-                    <figcaption>
+                    <figcaption class="is-family-primary">
                         <a href="{{ $photo->photographerProfileUrl }}">
                             &copy; {{ $photo->photographerName }}
                         </a>
@@ -25,6 +28,6 @@
             </div>
         </main>
         
-        @vite('resources/js/app.js')
+        {{-- @vite('resources/js/app.js') --}}
     </body>
 </html>

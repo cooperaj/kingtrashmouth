@@ -1,12 +1,11 @@
-@use "bulma/sass/utilities";
-
+@forward "bulma/sass/utilities";
 @forward "bulma/sass/base";
+@forward "bulma/sass/elements/title";
+@forward "bulma/sass/helpers/visibility";
+@forward "bulma/sass/helpers/flexbox";
+@forward "bulma/sass/helpers/typography";
 
 main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     height: 100vh;
 }
 
@@ -14,12 +13,17 @@ main {
     max-width: 768px;
 
     figcaption {
-        font-family: sans-serif;
         text-align: right;
         color: white;
         font-size: 0.8rem;
         margin-top: -2rem;
         padding-right: 0.5rem;
         text-shadow: 1px 1px 1px black;
+    }
+
+    .header {
+        position: relative;
+        padding-bottom: 1rem;
+        width: 90%;
     }
 }
