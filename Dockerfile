@@ -69,7 +69,7 @@ COPY ./ /app/
 COPY --from=build-production-assets /app/public/build /app/public/build
 COPY --from=build-production-dependencies --chown=0:0 /app/vendor /app/vendor
 
-RUN ./artisan migrate --force && \
+RUN ./artisan migrate --force && ./artisan storage:link && \
     chown www-data:www-data /app/database /app/database/database.sqlite && \
     chown -R www-data:www-data /app/storage/*
     
