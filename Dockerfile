@@ -7,7 +7,7 @@ RUN install-php-extensions gd
 
 
 #-- production assets
-FROM docker.io/node:22-alpine as build-production-assets
+FROM docker.io/node:18-alpine as build-production-assets
 
 RUN apk add --no-cache libstdc++ libgcc
 
@@ -19,7 +19,7 @@ RUN npm ci
 
 COPY ./resources /app/resources
 
-RUN npm ci && npm run build
+RUN npm run build
 
 
 #-- production dependencies
