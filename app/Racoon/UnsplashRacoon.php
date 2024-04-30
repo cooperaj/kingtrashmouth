@@ -30,10 +30,10 @@ class UnsplashRacoon implements RacoonInterface
 
             $image = $this->imageManager->read(file_get_contents($photo->download()));
     
-            Storage::disk('public')->put($photo->id . '.webp', (string) $image->scaleDown(width: 1200)->toWebp(80));
+            Storage::disk('public')->put($photo->id . '.webp', (string) $image->scaleDown(width: 1536)->toWebp(80));
+            Storage::disk('public')->put($photo->id . '_OG.webp', (string) $image->coverDown(width: 1200, height: 630, position: 'center')->toWebp(80));
 
             $photo = $photo->toArray();
-            $photo['cached_url'] = Storage::url($photo['id'] . '.webp');
 
             return Photo::from($photo);
         });
