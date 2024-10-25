@@ -1,5 +1,5 @@
 #-- setup base php server image
-FROM docker.io/dunglas/frankenphp:latest-php8.3-alpine as base
+FROM docker.io/dunglas/frankenphp:latest-php8.3-alpine AS base
 
 ENV SERVER_NAME=:80
 
@@ -7,7 +7,7 @@ RUN install-php-extensions gd
 
 
 #-- production assets
-FROM docker.io/node:18-alpine as build-production-assets
+FROM docker.io/node:18-alpine AS build-production-assets
 
 RUN apk add --no-cache libstdc++ libgcc
 
@@ -23,7 +23,7 @@ RUN npm run build
 
 
 #-- production dependencies
-FROM base as build-production-dependencies
+FROM base AS build-production-dependencies
 
 COPY --from=docker.io/composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./ /app
@@ -37,7 +37,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 
 #-- development image
-FROM base as build-development
+FROM base AS build-development
 
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
@@ -59,7 +59,7 @@ RUN ln -s /opt/yarn-$(ls /opt/ | grep yarn | sed 's/yarn-//')/bin/yarnpkg /usr/l
 
 
 #-- production image
-FROM base as build-production
+FROM base AS build-production
 
 ENV ENV=PRODUCTION
 
