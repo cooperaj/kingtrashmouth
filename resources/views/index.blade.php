@@ -10,7 +10,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kingtrashmouth.org" />
         <meta property="og:description" content="His name's Little King Trashmouth, he's gay... yeah, he's got a boyfriend - they just got maaaaried." />
-        <meta property="og:image" content="{{ asset('storage/' . $photo->id . '_OG.webp') }}" />
+        <meta property="og:image" content="{{ Storage::url($photo->id . '_OG.webp') }}" />
 
         @vite('resources/css/app.scss')
     </head>
@@ -22,7 +22,7 @@
                 </div>
                 <figure>
                     <img
-                        src="{{ asset('storage/' . $photo->id . '.webp') }}"
+                        src="{{ Storage::url($photo->id . '.webp') }}"
                         alt="{{ $photo->alt }}"
                     />
                     <figcaption class="is-family-primary">
