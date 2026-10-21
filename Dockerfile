@@ -71,6 +71,7 @@ COPY --from=build-production-dependencies --chown=0:0 /app/vendor /app/vendor
 
 RUN ./artisan migrate --force && ./artisan storage:link && \
     chown www-data:www-data /app/database /app/database/database.sqlite && \
-    chown -R www-data:www-data /app/storage/*
+    chown -R www-data:www-data /app/storage/*. && \
+    chown www-data:www-data /data/caddy
     
 USER www-data
