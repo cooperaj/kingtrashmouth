@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Interfaces\ImageManagerInterface;
+use Intervention\Image\Alignment;
 use Unsplash\HttpClient;
 use Unsplash\Photo as UnsplashPhoto;
 
@@ -28,10 +29,10 @@ class UnsplashRacoon implements RacoonInterface
                 'query' => 'racoon'
             ]);
 
-            $image = $this->imageManager->read(file_get_contents($photo->download()));
+            $image = $this->imageManager->decodeBinary(file_get_contents($photo->download()));
     
-            Storage::disk('public')->put($photo->id . '.webp', (string) $image->scaleDown(width: 1536)->toWebp(80));
-            Storage::disk('public')->put($photo->id . '_OG.webp', (string) $image->coverDown(width: 1200, height: 630, position: 'center')->toWebp(80));
+            Storage::disk('public')->put($photo->id . '.webp', (string) $image->scaleDown(width: 1536)->encodeUsingFileExtension('webp'));
+            Storage::disk('public')->put($photo->id . '_OG.webp', (string) $image->coverDown(width: 1200, height: 630, alignment: Alignment::CENTER)->encodeUsingFileExtension('webp'));
 
             $photo = $photo->toArray();
 

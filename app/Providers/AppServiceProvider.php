@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider implements DeferrableProvider
         $this->app->singleton(RacoonInterface::class, function(Application $app) {
             return new UnsplashRacoon(
                 config('racoon.unsplash_access_key'),
-                $app->get('image'),
+                $app->get('intervention.image'),
             );
         });
     }

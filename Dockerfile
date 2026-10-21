@@ -1,5 +1,5 @@
 #-- setup base php server image
-FROM docker.io/dunglas/frankenphp:latest-php8.3-alpine AS base
+FROM docker.io/dunglas/frankenphp:php8.5-alpine AS base
 
 ENV SERVER_NAME=:80
 

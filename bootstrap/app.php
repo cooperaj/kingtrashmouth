@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -18,7 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
             // we don't need no stinking sessions
             ShareErrorsFromSession::class,
             StartSession::class,
-            ValidateCsrfToken::class,
+            PreventRequestForgery::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
